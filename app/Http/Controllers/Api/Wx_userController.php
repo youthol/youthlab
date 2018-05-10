@@ -20,11 +20,11 @@ class Wx_userController extends Controller
     public function update(Request $request){
         //数据验证
         $validators = Validator::make($request->all(),[
-            'name'=> [
+            'sdut_name'=> [
                 'nullable',
                 'max:20',
             ],
-            'sno'=>[
+            'sdut_id'=>[
                 'required',
                 'digits:11'
             ],
@@ -36,11 +36,19 @@ class Wx_userController extends Controller
                 'nullable',
                 'max:50'
             ],
+            'class_name'=>[
+                'nullable',
+                'max:20'
+            ],
             'dormitory'=>[
                 'nullable',
                 'exists:dormitory,id'
             ],
-            'tel'=>[
+            'room'=>[
+                'nullable',
+                'max:5'
+            ],
+            'phone'=>[
                 'nullable',
                 'regex:/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/',
             ]
