@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Dormitory;
 use App\Models\Exam_meta;
 use App\Models\Exam_time;
 use App\Models\Gkl;
@@ -24,8 +25,8 @@ class FeatureController extends Controller
     //宿舍成绩
     public function hygiene()
     {
-        $lroom = \request('lroom');
-        $croom = intval(\request('croom'));
+        $lroom = \request('dormitory');
+        $croom = intval(\request('room'));
         $room = $lroom.$croom;
         $data = Hygiene::where('room','=',$room)->orderBy('week','asc')->get();
         if(count($data)>0){
@@ -66,7 +67,24 @@ class FeatureController extends Controller
     }
     //
     public function elect(){
-//        $http = new Client();
-//        $url = ""
+        $dormitroy = \request('dormitory');
+        $room = \request('room');
+        if($dormitroy=='13H'){
+            $num = substr($room,0,1);
+            if($num==1){
+                $elec_room = "13#南";
+            }else if($num==2||$num==3){
+                $elec_room = "13#北";
+            }
+        }else{
+            $elec_room = Dormitory::where('name',$dormitroy)->first();
+            if($elec_room==null){
+                return $this->response->errorNotFound("对不起，未获取到宿舍楼号为{$dormitroy}的宿舍信息");
+            }
+        }
+        $data = $elec_room->elec_room.$room;
+        return $data;
+        $http = new Client();
+        $url = "http://lgny.sdut.edu.cn/matrixlambdasupport/lightingweb.grace".http_build_query($data);
     }
 }

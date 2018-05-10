@@ -40,9 +40,9 @@ $api->version('v1', [
         ->name('api.authorizations.destroy');
 
     //获取个人信息
-    $api->get('user','Wx_UserController@index');
+    $api->get('user','Wx_userController@index');
     //更新个人信息
-    $api->put('user','Wx_UserController@update');
+    $api->put('user','Wx_userController@update');
 
     //宿舍成绩
     $api->get('hygiene','FeatureController@hygiene');
@@ -53,4 +53,11 @@ $api->version('v1', [
     //综测成绩
     $api->get('zongce','FeatureController@zongce');
 
+
+
+
+    //api接口
+
+    //电费查询
+    $api->get('elect','FeatureController@elec');
 });
