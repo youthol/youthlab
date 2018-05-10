@@ -23,6 +23,7 @@ class CraeteExamTimesTable extends Migration
             $table->string('class_name',30)->nullable();
             $table->string('sdut_id',11)->nullable();
             $table->string('name',30)->nullable();
+            $table->string('exam_name','30')->nullable();
             $table->string('code',30)->nullable();
             $table->string('date',24)->nullable();
             $table->string('classroom',13)->nullable();
