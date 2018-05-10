@@ -62,8 +62,11 @@ class Wx_userController extends Controller
     }
     public function index(){
         $user = Auth::user();
-        $info = Wx_users_info::where('wx_user_id',$user->id)->get()[0];
-        $data = array_merge($user->toArray(),$info->toArray());
-        return $this->response->array($data);
+        $user->info;
+        //$info = Wx_users_info::where('wx_user_id',$user->id)->get()[0];
+        //$info->academy = $info->get_academy->name;
+        //$info->dormitory = $info->get_dormitory->name;
+        //$data = array_merge($user->toArray(),$info->toArray());
+        return $this->response->array(['data'=>$user]);
     }
 }

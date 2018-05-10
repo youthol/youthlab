@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExamsTable extends Migration
+class RenameNameToSdutNameAndSnoToSdutIdOfWxUsersInfoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateExamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('exams', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::table('wx_users_info',function (Blueprint $table){
+            $table->renameColumn('name','sdut_name');
+            $table->renameColumn('sno','sdut_id');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateExamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exams');
+        //
     }
 }

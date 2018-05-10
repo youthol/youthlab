@@ -14,6 +14,9 @@ class Wx_user extends Authenticatable implements JWTSubject
     protected $fillable = [
         'openid','nickname','avatar','province','city','gender',
     ];
+    public function info(){
+        return $this->hasOne('App\Models\Wx_users_info','wx_user_id','id');
+    }
     public function getJWTIdentifier()
     {
         return $this->getKey();

@@ -19,10 +19,10 @@ class CreateWxUsersInfoTable extends Migration
             $table->string('sno',11)->unique()->nullable();
             $table->integer('academy')->nullable();
             $table->string('major')->nullable();
-            $table->string('class')->nullable();
+            $table->string('class_name')->nullable();
             $table->integer('dormitory')->nullable();
             $table->string('room')->nullable();
-            $table->string('tel',11)->nullable();
+            $table->string('phone',11)->nullable();
             $table->integer('wx_user_id')->unique();
             $table->timestamps();
         });

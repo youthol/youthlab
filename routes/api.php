@@ -21,7 +21,15 @@ $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api',
 //    'middleware' => 'serializer:array'
 ], function($api) {
-// 用户注册
+
+    //全局数据：
+    //宿舍楼号
+    $api->get('dormitory','GlobalController@dormitory');
+    //各个学院
+    $api->get('academy','GlobalController@academy');
+
+
+    // 用户注册
     $api->post('authorization', 'AuthorizationsController@getWxUserInfo')
         ->name('api.users.getwxuserinfo');
     // 刷新token
@@ -31,10 +39,18 @@ $api->version('v1', [
     $api->delete('authorizations/current', 'AuthorizationsController@destroy')
         ->name('api.authorizations.destroy');
 
-    //宿舍成绩
-    $api->post('hygiene','FeatureController@hygiene');
     //获取个人信息
     $api->get('user','Wx_UserController@index');
     //更新个人信息
     $api->put('user','Wx_UserController@update');
+
+    //宿舍成绩
+    $api->get('hygiene','FeatureController@hygiene');
+    //荣誉称号
+    $api->get('rongyu','FeatureController@rongyu');
+    //考试时间
+    $api->get('exam','FeatureController@exam');
+    //综测成绩
+    $api->get('zongce','FeatureController@zongce');
+
 });

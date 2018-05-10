@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHygieneTable extends Migration
+class CreateGklTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateHygieneTable extends Migration
      */
     public function up()
     {
-        Schema::create('hygiene', function (Blueprint $table) {
+        Schema::create('gkl', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date');
-            $table->integer('week');
-            $table->string('dormitory');
-            $table->string('room');
-            $table->integer('score');
-            $table->string('academy');
-            $table->string('member');
+            $table->string('course',30)->nullable();
+            $table->string('gkl',10)->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ class CreateHygieneTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hygiene');
+        Schema::dropIfExists('gkl');
     }
 }
