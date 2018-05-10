@@ -38,5 +38,6 @@ class CraeteExamMetasTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('exam_metas');
     }
 }

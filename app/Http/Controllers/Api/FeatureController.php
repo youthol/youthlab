@@ -7,6 +7,7 @@ use App\Models\Exam_time;
 use App\Models\Gkl;
 use App\Models\Rongyu;
 use Dotenv\Validator;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Models\Wx_user;
 use Auth;
@@ -64,4 +65,8 @@ class FeatureController extends Controller
         }
     }
     //
+    public function elect(){
+//        $http = new Client();
+//        $url = ""
+    }
 }

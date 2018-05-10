@@ -40,5 +40,6 @@ class CraeteExamTimesTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('exam_times');
     }
 }
