@@ -79,15 +79,15 @@ class AuthorizationsController extends Controller
         Auth::guard('api')->logout();
         return $this->response->noContent();
     }
-    public function dormitory(){
-        $lroom = \request('lroom');
-        $croom = intval(\request('croom'));
-        $room = $lroom.$croom;
-        $data = Dormitory::where('room','=',$room)->get();
-        if(count($data)>0){
-            return $this->response->$data->setStatus(201);
-        }else{
-            return $this->response->errorUnauthorized('参数错误，未获取到宿舍信息');
-        }
-    }
+//    public function dormitory(){
+//        $lroom = \request('lroom');
+//        $croom = intval(\request('croom'));
+//        $room = $lroom.$croom;
+//        $data = Dormitory::where('room','=',$room)->get();
+//        if(count($data)>0){
+//            return $this->response->$data->setStatus(201);
+//        }else{
+//            return $this->response->errorUnauthorized('参数错误，未获取到宿舍信息');
+//        }
+//    }
 }

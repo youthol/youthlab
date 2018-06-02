@@ -59,5 +59,5 @@ $api->version('v1', [
     //api接口
 
     //电费查询
-    $api->get('elect','FeatureController@elec');
+    $api->get('elect','FeatureController@elect');
 });

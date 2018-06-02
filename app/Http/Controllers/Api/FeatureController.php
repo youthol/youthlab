@@ -20,7 +20,7 @@ class FeatureController extends Controller
 {
     function __construct()
     {
-        $this->middleware('api.auth');
+        $this->middleware('auth:api');
     }
     //宿舍成绩
     public function hygiene()
@@ -81,10 +81,16 @@ class FeatureController extends Controller
             if($elec_room==null){
                 return $this->response->errorNotFound("对不起，未获取到宿舍楼号为{$dormitroy}的宿舍信息");
             }
+            $elec_room =  $elec_room->elec_name;
         }
-        $data = $elec_room->elec_room.$room;
-        return $data;
-        $http = new Client();
-        $url = "http://lgny.sdut.edu.cn/matrixlambdasupport/lightingweb.grace".http_build_query($data);
+        $data = ['arg'=>$elec_room.$room];
+//        $http = new Client();
+//        $url = "http://lgny.sdut.edu.cn/matrixlambdasupport/lightingweb.grace?".http_build_query($data);
+        $url = "http://lgny.sdut.edu.cn/matrixlambdasupport/lightingweb.grace?arg=".$elec_room.$room;
+//        $url = http://wx.youthol.cn/api/dormitory;
+//        return $url;
+        $client = new Client();
+        $response = $client->get("$url");
+        return $response->getBody();
     }
 }

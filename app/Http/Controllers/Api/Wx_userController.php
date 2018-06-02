@@ -14,7 +14,7 @@ class Wx_userController extends Controller
 {
     function __construct()
     {
-        $this->middleware('api.auth');
+        $this->middleware('auth:api');
     }
 
     public function update(Request $request){
@@ -69,7 +69,7 @@ class Wx_userController extends Controller
 
     }
     public function index(){
-        $user = Auth::user();
+        $user = Auth::guard('api')->user();
         $user->info;
         //$info = Wx_users_info::where('wx_user_id',$user->id)->get()[0];
         //$info->academy = $info->get_academy->name;
