@@ -20,7 +20,7 @@ class FeatureController extends Controller
 {
     function __construct()
     {
-        $this->middleware('auth:api');
+//        $this->middleware('auth:api');
     }
     //宿舍成绩
     public function hygiene()
